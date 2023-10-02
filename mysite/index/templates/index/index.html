@@ -1,0 +1,42 @@
+{% extends 'index/base.html' %}
+
+
+
+{% block content %}
+    <div class="container">
+        <h1 class="game__title">{{ title }}</h1>
+        <ul class="posts__list">
+            {% for post in posts %}
+            <li class="posts__item">
+                <h2 class="posts__caption">{{ post.title }}</h2>
+<!--                <p class="posts__desc"> {{ post.content }}</p>-->
+                <div class="posts__desc">
+                    {% autoescape off %}
+                    {{ post.content | linebreaks | truncatewords:30 }}
+                    {% endautoescape %}
+                </div>
+                <a href="#" class="posts__link">More information...</a>
+                <hr>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--&lt;!&ndash;    <title>Main page</title>&ndash;&gt;-->
+<!--    <title>{{ title }}</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash;    <h1>Main page</h1>&ndash;&gt;-->
+<!--    <h1>{{ title }}</h1>-->
+<!--    <ul>-->
+<!--        {% for item in menu %}-->
+<!--        <li>{{ item }}</li>-->
+<!--        {% endfor %}-->
+<!--    </ul>-->
+<!--</body>-->
+<!--</html>-->
