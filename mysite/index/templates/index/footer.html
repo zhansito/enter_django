@@ -1,0 +1,13 @@
+{% load static %}
+<footer class="footer">
+    <div class="container">
+        <div class="footer__container">
+            <a href="{% url 'home' %}" class="footer__logo"><img src="{% static 'index/images/logo.jpg' %}"></a>
+           <ul class="footer__menu menu">
+               {% for item in menu %}
+                    <li class="menu__item__footer"><a href="{% url item.url_name %}">{{ item.title }}</a></li>
+               {% endfor %}
+           </ul>
+        </div>
+    </div>
+</footer>

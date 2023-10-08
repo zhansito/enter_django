@@ -1,0 +1,29 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="news__title"> {{ title }}</h1>
+        <ul class="news_container">
+            {% for new in news %}
+                <li class="news__item">
+                    <div class="news__meta>">
+                        <div>Author: {{ new.author }}</div>
+                        <div>Date: {{ new.date|date:"D d M Y" }}</div>
+                    </div>
+                    <div class="news_wrap">
+<!--                        <div class="news__img"><img src="{{ new.photo.url }}"></div>-->
+                        <div class="news__desc">
+                            <h2 class="news__caption">{{ new.title }}</h2>
+                            <div class="news__txt">
+                                {% autoescape off %}
+                                {{ new.content | linebreaks | truncatewords:30 }}
+                                {% endautoescape %}
+                            </div>
+<!--                            <a href="{{ new.get_absolute_url }}" class="news__link">More...</a>-->
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

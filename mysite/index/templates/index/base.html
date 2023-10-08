@@ -1,4 +1,5 @@
 {% load static %}
+{% load index_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,21 +9,29 @@
 </head>
 <body>
     {% block mainmenu %}
-    <header class="header">
-        <div class="container">
-            <div class="header__container">
-                <a href="{% url 'home' %}" class="header__logo"><img src="{% static 'index/images/logo.jpg' %}"></a>
-                <ul class="header__menu menu">
-                    {% for item in menu %}
-                    <li class="menu__item"><a href="#">{{ item }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </header>
+        {% show_header %}
     {% endblock %}
-    {% block content %}
-
+    {% block main %}
+    <main class="main">
+        {% block sidebar %}
+        <ul class="sidebar">
+            {% if spec_selected == 0 %}
+            <li class="selected">Specializations</li>
+            {% else %}
+            <li><a href="{% url 'home' %}">Specializations</a></li>
+            {% endif %}
+            {% show_specializations spec_selected=spec_selected %}
+<!--                <li class="sidebar__title">Specializations</li>-->
+<!--                <li class="sidebar__item"><a>Developer</a></li>-->
+<!--                <li class="sidebar__item"><a>Khalif</a></li>-->
+        </ul>
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+    </main>
+    {% endblock %}
+    {% block footermenu %}
+        {% show_footer %}
     {% endblock %}
 </body>
 </html>

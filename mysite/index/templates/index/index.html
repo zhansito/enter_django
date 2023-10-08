@@ -1,22 +1,28 @@
 {% extends 'index/base.html' %}
 
-
-
 {% block content %}
-    <div class="container">
+    <div class="content">
         <h1 class="game__title">{{ title }}</h1>
         <ul class="posts__list">
             {% for post in posts %}
             <li class="posts__item">
-                <h2 class="posts__caption">{{ post.title }}</h2>
-<!--                <p class="posts__desc"> {{ post.content }}</p>-->
-                <div class="posts__desc">
-                    {% autoescape off %}
-                    {{ post.content | linebreaks | truncatewords:30 }}
-                    {% endautoescape %}
+                <div class="posts__meta">
+                    <div>Specialization: {{ post.specialization.name }}</div>
+                    <div>Date: {{ post.time_update|date:"D d M Y" }}</div>
                 </div>
-                <a href="#" class="posts__link">More information...</a>
-                <hr>
+                <div class="posts__wrap">
+                    <div class="posts__img"><img src="{{ post.photo.url }}"></div>
+                    <div class="posts__desc">
+                        <h2 class="posts__caption">{{ post.title }}</h2>
+                        <div class="posts__txt">
+                            {% autoescape off %}
+                            {{ post.content | linebreaks | truncatewords:50 }}
+                            {% endautoescape %}
+                        </div>
+<!--                <a href="{% url 'post' post.pk %}" class="posts__link">More information...</a>-->
+                    <a href="{{ post.get_absolute_url }}" class="posts__link">More information...</a>
+                    </div>
+                </div>
             </li>
             {% endfor %}
         </ul>

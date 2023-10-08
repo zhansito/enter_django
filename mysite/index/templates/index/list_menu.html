@@ -1,0 +1,3 @@
+{% for item in menu %}
+    <li class="menu__item"><a href="{% url item.url_name %}">{{ item.title }}</a></li>
+{% endfor %}

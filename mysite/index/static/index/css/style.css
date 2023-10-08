@@ -10,17 +10,19 @@ html {
   margin: 0;
   box-sizing: border-box;
 }
-
 ul[class],
 ol[class] {
   list-style: none;
 }
-
 img {
   display: block;
   max-width: 100%;
 }
-
+body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
 .container {
   max-width: 80%;
   padding: 0 16px;
@@ -28,9 +30,11 @@ img {
 }
 /* header */
 .header {
+    position: relative;
     padding: 20px 0;
-    margin-bottom: 50px;
-    border-bottom: 1px solid #000;
+    /*border-bottom: 1px solid #000;*/
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 40px 0px;
+    z-index: 1;
 }
 .header__container {
     display: flex;
@@ -48,6 +52,37 @@ img {
     height: 100%;
     object-fit: contain;
 }
+/* footer */
+.footer {
+    background: gray;
+    padding: 20px 0;
+    border-bottom: 1px solid #000;
+}
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.footer__logo {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+.footer__logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.menu__item__footer a{
+    color: #ffffff;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.2s liner;
+}
+.menu__item__footer a:hover {
+    color: blue;
+}
 /* menu */
 .menu {
     display: flex;
@@ -62,7 +97,7 @@ img {
     transition: all 0.2s liner;
 }
 .menu__item a:hover {
-    color: blue;
+    color: #8cb500;
 }
 /* game */
 .game__title {
@@ -83,10 +118,23 @@ img {
     margin-bottom: 0;
     border-bottom: none;
 }
+.posts__wrap {
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    gap: 20px;
+}
+.posts__img {
+    height: 400px;
+}
+.posts__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .posts__caption {
     margin-bottom: 10px;
 }
-.posts__desc {
+.posts__txt {
     margin-bottom: 30px;
 }
 .posts__link {
@@ -98,4 +146,123 @@ img {
     font-size: 18px;
     text-decoration: none;
     transition: all 0.2s liner;
+}
+.posts__meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+}
+/* post*/
+.post__title {
+    margin-bottom: 30px;
+}
+.post__wrap {
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    gap: 20px;
+}
+.post__img {
+    height: 400px;
+}
+.post__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* news */
+.news_container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.news__desc {
+    height: 50%;
+    margin-bottom: 30px;
+}
+.news__item {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.news__item:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+.news__wrap {
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    gap: 20px;
+}
+.news__img {
+    height: 400px;
+}
+.news__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.news__caption {
+    margin-bottom: 10px;
+}
+.news__txt {
+    margin-bottom: 30px;
+}
+.news__link {
+    display: block;
+    width: max-content;
+    padding: 5px 10px;
+    color: #fff;
+    background: #000;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.2s liner;
+}
+.news__meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+}
+/* main */
+.main {
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    /* height: 100%; */
+    flex-grow: 1;
+}
+/*.sidebar {*/
+/*    background: gray;*/
+/*    float: left;*/
+/*    height: 100vh;*/
+/*    padding-left: 10px;*/
+/*    padding-right: 20px;*/
+/*    padding-top: 20px;*/
+/*}*/
+/*.sidebar__title {*/
+/*    color: lightblue;*/
+/*}*/
+/*.sidebar__item {*/
+/*    color: white;*/
+/*}*/
+/*teacher's sidebar*/
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px;
+    background: #f4f4f4;
+}
+.sidebar li {
+    text-transform: uppercase;
+    font-size: 18px;
+}
+.sidebar .selected {
+    color: #8cb500;
+}
+/* content */
+.content {
+    padding: 20px;
 }
