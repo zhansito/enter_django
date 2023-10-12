@@ -266,3 +266,37 @@ body{
 .content {
     padding: 20px;
 }
+/* form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 30%;
+}
+.form__row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.form__input {
+    display: grid;
+    grid-template-columns: 35% 1fr;
+    gap: 20px;
+}
+.form__input input {
+    padding: 8px 16px;
+}
+.form__input input[type="checkbox"] {
+    margin-right: auto;
+}
+.form__input textarea {
+    resize: none;
+    height: 150px;
+    padding: 8px 16px;
+}
+.form__button {
+    padding: 8px 16px;
+}
+.form__error {
+    color: red;
+}

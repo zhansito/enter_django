@@ -1,0 +1,18 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+    <div class="content">
+        <h1>{{ title }}</h1>
+        <form action="{% url 'addcontact' %}" method="post" class="form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form__row">
+                    <label class="form__label" for="field.id_for_label">{{ field.label }}:</label>
+                    {{ field }}
+                </div>
+                <div class="form__error">{{ field.errors }}</div>
+            {% endfor %}
+            <button type="submit">Send</button>
+        </form>
+    </div>
+{% endblock %}

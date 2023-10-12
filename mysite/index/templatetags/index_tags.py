@@ -1,5 +1,5 @@
 from django import template
-from index.models import *
+from index.models import Specialization, News
 from index.views import *
 
 register = template.Library()
@@ -19,6 +19,7 @@ def show_specializations(sort=None, spec_selected=0):
     else:
         specs = Specialization.objects.order_by(sort)
     return {'specs': specs, 'spec_selected': spec_selected}
+
 @register.inclusion_tag('index/news.html')
 def show_news(sort=None, news_selected=0):
     if not sort:
@@ -38,7 +39,8 @@ def show_header():
     menu = [
         {'title': 'Main', 'url_name': 'home'},
         {'title': 'About', 'url_name': 'about'},
-        {'title': 'Contacts', 'url_name': 'contact'},
+        {'title': 'Add post', 'url_name': 'addpost'},
+        {'title': 'Contact us', 'url_name': 'addcontact'},
         {'title': 'News', 'url_name': 'news'},
         {'title': 'Login', 'url_name': 'login'},
     ]
@@ -50,10 +52,30 @@ def show_footer():
     menu = [
         {'title': 'Main', 'url_name': 'home'},
         {'title': 'About', 'url_name': 'about'},
-        {'title': 'Contacts', 'url_name': 'contact'},
+        {'title': 'Add post', 'url_name': 'addpost'},
+        {'title': 'Contact us', 'url_name': 'addcontact'},
         {'title': 'News', 'url_name': 'news'},
         {'title': 'Login', 'url_name': 'login'},
     ]
-    return {'menu': menu}
+    footer_main = [
+        {'title': 'Specialization', 'url_name': 'home'},
+        {'title': 'Info', 'url_name': 'home'},
+    ]
+    footer_about = [
+        {'title': 'About us'},
+        {'title': 'Contact us'},
+    ]
+    footer_account = [
+        {'title': 'Sign in'},
+        {'title': 'Sign up'}
+    ]
+    # footer_menu = [
+    #     {'name': footer_account},
+    #     {'name': footer_main},
+    #     {'name': footer_about},
+    # ]
+    footer_menu = (footer_account, footer_main, footer_about)
+    # return {'menu': menu, 'footer_main': footer_main, 'footer_about': footer_about, 'footer_account': footer_account}
+    return {'menu': menu, 'footer_menu': footer_menu}
 
 

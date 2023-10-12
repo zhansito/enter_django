@@ -3,11 +3,34 @@
     <div class="container">
         <div class="footer__container">
             <a href="{% url 'home' %}" class="footer__logo"><img src="{% static 'index/images/logo.jpg' %}"></a>
-           <ul class="footer__menu menu">
-               {% for item in menu %}
-                    <li class="menu__item__footer"><a href="{% url item.url_name %}">{{ item.title }}</a></li>
-               {% endfor %}
-           </ul>
+            <!--           <ul class="footer__menu menu">-->
+            <!--               {% for item in menu %}-->
+            <!--                    <li class="menu__item__footer"><a href="{% url item.url_name %}">{{ item.title }}</a></li>-->
+            <!--               {% endfor %}-->
+            <!--           </ul>-->
+            <!--            <div>-->
+            <!--                <header>{{ menu.0.title }}</header>-->
+            <!--                {% for item in footer_main %}-->
+            <!--                <div class="menu__item__footer"><a href="{% url item.url_name %}">{{ item.title }}</a></div>-->
+            <!--                {% endfor %}-->
+            <!--            </div>-->
+            <!--            <div>-->
+            <!--                <header>{{ menu.1.title }}</header>-->
+            <!--                {% for item in footer_about %}-->
+            <!--                <div class="menu__item__footer"><a href="#">{{ item.title }}</a></div>-->
+            <!--                {% endfor %}-->
+            <!--            </div>-->
+
+            <!--            {% for item in menu %}-->
+            <div>
+                <header>{{ item.title }}</header>
+                {% for a in footer_menu %}
+                {% for n in a %}
+                <div class="menu__item__footer"><a href="#">{{ n.title }}</a></div>
+                {% endfor %}
+                {% endfor %}
+            </div>
+            {% endfor %}
         </div>
     </div>
 </footer>
